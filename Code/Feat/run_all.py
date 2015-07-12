@@ -58,9 +58,9 @@ os.system(cmd)
 cmd = "python ./combine_feat_[LSA_and_stats_feat_Jun09]_[Low].py"
 os.system(cmd)
 
-# #### combine feat
-# cmd = "python ./combine_feat_[LSA_svd150_and_Jaccard_coef_Jun14]_[Low].py"
-# os.system(cmd)
+#### combine feat
+cmd = "python ./combine_feat_[LSA_svd150_and_Jaccard_coef_Jun14]_[Low].py"
+os.system(cmd)
 
 #### combine feat
 cmd = "python ./combine_feat_[svd100_and_bow_Jun23]_[Low].py"

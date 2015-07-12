@@ -57,7 +57,7 @@ Our solution consisted of two parts: feature engineering and model ensembling. W
 \item distance features
 \item TF-IDF features
 \end{itemize}
-Before generating features, we have found that it's helpful to process the text of the data with spelling correction, synonym replacement, and stemming. Model ensembling consisted of two main steps, Firstly, we trained model library using different models, different parameter settings, and different subsets of the features. Secondly, we generated ensemble submission from the model library predictions using bagged ensemble selection. Performance was estimated using cross validation within the training set. No external data sources were used in our winning submission.
+Before generating features, we have found that it's helpful to process the text of the data with spelling correction, synonym replacement, and stemming. Model ensembling consisted of two main steps, Firstly, we trained model library using different models, different parameter settings, and different subsets of the features. Secondly, we generated ensemble submission from the model library predictions using bagged ensemble selection. Performance was estimated using cross validation within the training set. No external data sources were used in our winning submission. The flowchart of our method is shown in Figure \ref{fig:Flowchart}.
 
 The best single model we have obtained during the competition was an XGBoost model with linear booster of Public LB score \textbf{0.69322} and Private LB score \textbf{0.70768}. Our final winning submission was a median ensemble of 35 best Public LB submissions. This submission scored \textbf{0.70807} on Public LB (our second best Public LB score) and \textbf{0.72189} on Private LB. \footnote{The best Public LB score was \textbf{0.70849} with corresponding Private LB score \textbf{0.72134}. It's a mean ensemble version of those 35 LB submissions.}
 
@@ -70,6 +70,12 @@ The best single model we have obtained during the competition was an XGBoost mod
 \end{tikzpicture}
 \end{figure}
 \end{comment}
+\begin{figure}[!htb]
+\centering
+\includegraphics[width=0.9\textwidth]{./FlowChart.pdf}
+\caption{The flowchart of our method.}
+\label{fig:Flowchart}
+\end{figure}
 
 \section{Preprocessing}
 A few steps were performed to cleaning up the text.
@@ -454,9 +460,9 @@ Package   & \multicolumn{2}{c|}{Model}    & Feature & Weighting\\
   &   &  Softmax & &\\ \cline{3-3}
   &   &  Softkappa & &\\ \cline{3-3}
 \hline
-\multirow{7}*{Sklearn} & \multicolumn{2}{c|}{\texttt{ExtraTreesRegressor}} & Low & Yes\\ \cline{2-5}
-  & \multicolumn{2}{c|}{\texttt{RandomForestRegressor}}      & Low & Yes\\ \cline{2-5}
-  & \multicolumn{2}{c|}{\texttt{GradientBoostingRegressor}} & Low & Yes\\ \cline{2-5}
+\multirow{7}*{Sklearn} & \multicolumn{2}{c|}{\texttt{GradientBoostingRegressor}} & Low & Yes\\ \cline{2-5}
+  & \multicolumn{2}{c|}{\texttt{ExtraTreesRegressor}}      & Low & Yes\\ \cline{2-5}
+  & \multicolumn{2}{c|}{\texttt{RandomForestRegressor}} & Low & Yes\\ \cline{2-5}
   & \multicolumn{2}{c|}{\texttt{SVR}}                            & Low & Yes\\ \cline{2-5}
   & \multicolumn{2}{c|}{\texttt{Ridge}}                & High/Low & Yes\\ \cline{2-5}
   & \multicolumn{2}{c|}{\texttt{Lasso}}                 & High/Low & No\\ \cline{2-5}

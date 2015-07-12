@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9) (preloaded format=pdflatex 2013.11.4)  12 JUL 2015 16:34
+This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9) (preloaded format=pdflatex 2013.11.4)  12 JUL 2015 19:01
 entering extended mode
 **Kaggle_CrowdFlower_ChenglongChen.tex
 (F:\CrowdFolwer\cleanup\Doc\Kaggle_CrowdFlower_ChenglongChen.tex
@@ -768,33 +768,38 @@ LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
 (F:\CrowdFolwer\cleanup\Doc\Kaggle_CrowdFlower_ChenglongChen.toc [2])
 \tf@toc=\write5
  [3]
-[4] [5] [6] [7]
-Overfull \hbox (16.01123pt too wide) in paragraph at lines 243--244
+<./FlowChart.pdf, id=266, 722.7pt x 371.3081pt>
+File: ./FlowChart.pdf Graphic file (type pdf)
+ <use ./FlowChart.pdf>
+Package pdftex.def Info: ./FlowChart.pdf used on input line 75.
+(pdftex.def)             Requested size: 422.77664pt x 217.21153pt.
+ [4 <F:/CrowdFolwer/cleanup/Doc/FlowChart.pdf>] [5] [6] [7] [8]
+Overfull \hbox (16.01123pt too wide) in paragraph at lines 249--250
 []\OT1/cmr/m/n/10.95 compute dis-tance be-tween each sam-ple and al-l the sam-p
 les in each \OT1/cmtt/m/n/10.95 median[]relevance
  []
 
-[8]
-Overfull \hbox (6.8553pt too wide) in paragraph at lines 269--271
+
+Overfull \hbox (6.8553pt too wide) in paragraph at lines 275--277
 \OT1/cmr/m/n/10.95 gram & bi-gram & tri-gram (in Sklearn's \OT1/cmtt/m/n/10.95 
 TfidfVectorizer\OT1/cmr/m/n/10.95 , set \OT1/cmtt/m/n/10.95 ngram[]range\OT1/cm
 r/m/n/10.95 =(1,3).) 
  []
 
 [9]
-Overfull \hbox (7.55405pt too wide) in paragraph at lines 323--325
+Overfull \hbox (7.55405pt too wide) in paragraph at lines 329--331
 \OT1/cmr/m/n/10.95 lace fre-ma-da, neck-lace ster-ling, neck-lace sil-ver, neck
 -lace freefor-m, neck-lace necklace$]$ 
  []
 
-
-Overfull \hbox (18.3055pt too wide) in paragraph at lines 330--331
+[10]
+Overfull \hbox (18.3055pt too wide) in paragraph at lines 336--337
 []\OT1/cmr/m/n/10.95 The file to gen-er-ate such fea-tures is pro-vid-ed as \OT
 1/cmr/bx/n/10.95 gen-Feat[]cooccurrence[]tfidf[]feat.py\OT1/cmr/m/n/10.95 . 
  []
 
-[10] [11]
-Overfull \hbox (6.46352pt too wide) in paragraph at lines 388--389
+[11] [12]
+Overfull \hbox (6.46352pt too wide) in paragraph at lines 394--395
 \OT1/cmr/m/n/10.95 Since the rel-e-vance s-core is in $\OMS/cmsy/m/n/10.95 f\OT
 1/cmr/m/n/10.95 1\OML/cmm/m/it/10.95 ; \OT1/cmr/m/n/10.95 2\OML/cmm/m/it/10.95 
 ; \OT1/cmr/m/n/10.95 3\OML/cmm/m/it/10.95 ; \OT1/cmr/m/n/10.95 4\OMS/cmsy/m/n/1
@@ -803,62 +808,62 @@ tion
  []
 
 
-Overfull \hbox (5.09244pt too wide) in paragraph at lines 397--398
+Overfull \hbox (5.09244pt too wide) in paragraph at lines 403--404
 []\OT1/cmr/m/n/10.95 This al-so ap-plies to One-Against-All (OAA) clas-si-fi-ca
 -tion, e.g., \OT1/cmtt/m/n/10.95 LogisticRegression
  []
 
-[12]
-Overfull \hbox (6.27373pt too wide) in paragraph at lines 417--418
+[13]
+Overfull \hbox (6.27373pt too wide) in paragraph at lines 423--424
 \OT1/cmr/m/n/10.95 ing class prob-a-bil-i-ties.[][][] The ob-jec-tive is in fil
 e \OT1/cmtt/m/n/10.95 ./Code/Model/utils.py\OT1/cmr/m/n/10.95 : \OT1/cmtt/m/n/1
 0.95 softkappaObj\OT1/cmr/m/n/10.95 .
  []
 
-[13] [14]
+[14] [15]
 PGFPlots: reading {35lb_subs.txt}
- [15] [16]
-Overfull \hbox (0.73491pt too wide) in paragraph at lines 539--540
+ [16]
+Overfull \hbox (0.73491pt too wide) in paragraph at lines 545--546
 []\OT1/cmr/bx/n/10.95 combine[]feat[][LSA[]and[]stats[]feat[]Jun09][][Low].py\O
 T1/cmr/m/n/10.95 : This file gen-er-ates one
  []
 
-
-Overfull \hbox (1.45724pt too wide) in paragraph at lines 566--567
+[17]
+Overfull \hbox (1.45724pt too wide) in paragraph at lines 572--573
 \OT1/cmr/m/n/10.95 pa. It is adopt-ed from []$\OT1/cmtt/m/n/10.95 https : / / g
 ithub . com / benhamner / Metrics / tree / master /$
  []
 
-[17]
-Overfull \hbox (32.26485pt too wide) in paragraph at lines 587--588
+[18]
+Overfull \hbox (32.26485pt too wide) in paragraph at lines 593--594
 []\OT1/cmr/m/n/10.95 XGBoost-0.4.0 (Win-dows Ex-e-cutable, []$\OT1/cmtt/m/n/10.
 95 https : / / github . com / dmlc / XGBoost / releases /$
  []
 
 
-Overfull \hbox (11.5833pt too wide) in paragraph at lines 588--589
+Overfull \hbox (11.5833pt too wide) in paragraph at lines 594--595
 []\OT1/cmr/m/n/10.95 ml[]metrics ([]$\OT1/cmtt/m/n/10.95 https : / / github . c
 om / benhamner / Metrics / tree / master / Python / ml _$
  []
 
 
-Overfull \hbox (12.11351pt too wide) in paragraph at lines 592--593
+Overfull \hbox (12.11351pt too wide) in paragraph at lines 598--599
 []\OT1/cmr/m/n/10.95 rgf1.2 (Win-dows Ex-e-cutable, []$\OT1/cmtt/m/n/10.95 http
  : / / stat . rutgers . edu / home / tzhang / software /$
  []
 
 
-Overfull \hbox (2.8642pt too wide) in paragraph at lines 596--596
+Overfull \hbox (2.8642pt too wide) in paragraph at lines 602--602
 []\OT1/cmr/bx/n/17.28 How To Gen-er-ate the So-lu-tion (a-ka README
  []
 
-[18] (F:\CrowdFolwer\cleanup\Doc\Kaggle_CrowdFlower_ChenglongChen.bbl
+[19] (F:\CrowdFolwer\cleanup\Doc\Kaggle_CrowdFlower_ChenglongChen.bbl
 Overfull \hbox (44.12091pt too wide) in paragraph at lines 4--5
 [][]$\OT1/cmtt/m/n/10.95 http : / / nycdatascience . com / featured-[]talk-[]1-
 []kaggle-[]data-[]scientist-[]owen-[]zhang/$[]\OT1/cmr/m/n/10.95 . 
  []
 
-[19]
+
 Overfull \hbox (5.08711pt too wide) in paragraph at lines 7--8
 [][]$\OT1/cmtt/m/n/10.95 https : / / www . kaggle . com / c / otto-[]group-[]pr
 oduct-[]classification-[]challenge /$
@@ -876,13 +881,13 @@ Underfull \hbox (badness 10000) in paragraph at lines 11--12
 ication / forums / t / 13863 /$
  []
 
-)
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 631.
- [20]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 631.
+[20])
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 637.
+ [21]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 637.
  (F:\CrowdFolwer\cleanup\Doc\Kaggle_CrowdFlower_ChenglongChen.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 631.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 631.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 637.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 637.
 
 
 Package rerunfilecheck Warning: File `Kaggle_CrowdFlower_ChenglongChen.out' has
@@ -894,12 +899,15 @@ Package rerunfilecheck Info: Checksums for `Kaggle_CrowdFlower_ChenglongChen.ou
 t':
 (rerunfilecheck)             Before: A531A6FD907444ED35169CFAC17839EF;10184
 (rerunfilecheck)             After:  5835D4BCA4B1BF337073CA56FA26B04F;3336.
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
  ) 
 Here is how much of TeX's memory you used:
- 21898 strings out of 495354
- 471435 string characters out of 3183859
- 684467 words of memory out of 3000000
- 24507 multiletter control sequences out of 15000+200000
+ 21906 strings out of 495354
+ 471557 string characters out of 3183859
+ 683153 words of memory out of 3000000
+ 24512 multiletter control sequences out of 15000+200000
  23519 words of font info for 91 fonts, out of 3000000 for 9000
  14 hyphenation exceptions out of 8191
  63i,19n,114p,989b,1949s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -915,10 +923,10 @@ c/amsfonts/cm/cmr17.pfb><D:/CTEX/MiKTeX/fonts/type1/public/amsfonts/cm/cmr7.pfb
 type1/public/amsfonts/cm/cmsy10.pfb><D:/CTEX/MiKTeX/fonts/type1/public/amsfonts
 /cm/cmti10.pfb><D:/CTEX/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt10.pfb><D:/CT
 EX/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt12.pfb>
-Output written on Kaggle_CrowdFlower_ChenglongChen.pdf (20 pages, 335464 bytes)
+Output written on Kaggle_CrowdFlower_ChenglongChen.pdf (21 pages, 369685 bytes)
 .
 PDF statistics:
- 516 PDF objects out of 1000 (max. 8388607)
- 118 named destinations out of 1000 (max. 500000)
- 381 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 532 PDF objects out of 1000 (max. 8388607)
+ 120 named destinations out of 1000 (max. 500000)
+ 386 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -59,7 +59,7 @@ Our solution consisted of two parts: feature engineering and model ensembling. W
 \end{itemize}
 Before generating features, we have found that it's helpful to process the text of the data with spelling correction, synonym replacement, and stemming. Model ensembling consisted of two main steps, Firstly, we trained model library using different models, different parameter settings, and different subsets of the features. Secondly, we generated ensemble submission from the model library predictions using bagged ensemble selection. Performance was estimated using cross validation within the training set. No external data sources were used in our winning submission.
 
-The best single model we have obtained during the competition was an XGBoost model with linear booster of Public LB score \textbf{0.69322} and Private LB score \textbf{0.70768}. Our final winning submission was a median ensemble of 35 best Public LB submissions. This submission scored \textbf{0.70807} on Public LB (my second best Public LB score) and \textbf{0.72189} on Private LB. \footnote{The best Public LB score was \textbf{0.70849} with corresponding Private LB score \textbf{0.72134}. It's a mean version of those 35 LB submissions.}
+The best single model we have obtained during the competition was an XGBoost model with linear booster of Public LB score \textbf{0.69322} and Private LB score \textbf{0.70768}. Our final winning submission was a median ensemble of 35 best Public LB submissions. This submission scored \textbf{0.70807} on Public LB (our second best Public LB score) and \textbf{0.72189} on Private LB. \footnote{The best Public LB score was \textbf{0.70849} with corresponding Private LB score \textbf{0.72134}. It's a mean ensemble version of those 35 LB submissions.}
 
 \begin{comment}
 \begin{figure}[!htb]
@@ -343,7 +343,7 @@ Note that with ensemble selection, one can train model library with various feat
 \section{Modeling Techniques and Training}
 \subsection{Cross Validation Methodology}
 \subsubsection{The Split}
-Early in the competition, we have been using \texttt{StratifiedKFold} on \texttt{median\_relevance} or \texttt{query} with $k = 5$ or $k = 10$, but there was a large gap between my CV score and Public LB score. We then changed our CV method to \texttt{StratifiedKFold} on \texttt{query} with $k = 3$, and used \emph{each 1 fold as training set} and \emph{the rest 2 folds as validation set}. This is to mimic the training-testing split of the data as pointed out by Kaggler @Silogram. With this strategy, our CV score tended to be more correlated with the Public LB score (see Table \ref{CV_LB}).
+Early in the competition, we have been using \texttt{StratifiedKFold} on \texttt{median\_relevance} or \texttt{query} with $k = 5$ or $k = 10$, but there was a large gap between our CV score and Public LB score. We then changed our CV method to \texttt{StratifiedKFold} on \texttt{query} with $k = 3$, and used \emph{each 1 fold as training set} and \emph{the rest 2 folds as validation set}. This is to mimic the training-testing split of the data as pointed out by Kaggler @Silogram. With this strategy, our CV score tended to be more correlated with the Public LB score (see Table \ref{CV_LB}).
 \subsubsection{Following the Same Logic}
 Since this is an NLP related competition, it's common to use TF-IDF features. We have seen a few people fitting a TF-IDF transformer on the stacked training and testing set, and then transforming the training and testing set, respectively. They then use such feature vectors (\textbf{they are fixed}) for cross validation or grid search for the best parameters. They call such method as semi-supervised learning. In our opinion, if one is taking such method, he should refit the transformer using only the whole training set in CV, following the same logic.
 
@@ -435,7 +435,7 @@ For the ensemble, we use bagged ensemble selection \cite{ensemble_selection}. On
 \subsubsection{Model Library Building via Guided Parameter Searching}
 Ensemble selection needs a model library contains lots (hundreds or thousands) of models trained used different algorithm (e.g., XGBoost or NN, see Table \ref{tab:Model_Library} for the algorithms we used) or different parameters (how may trees/layers/hidden units) or different feature sets. For each algorithm, we specified a parameter space, and used TPE method \cite{hyperopt} in Hyperopt package \cite{hyperopt_url} for parameter searching. It not only find the best parameter setting for each algorithm, but also create a model library with various parameter settings guided or provided by Hyperopt.
 
-During parameter searching, we trained a model with each parameter setting on training fold for each run and each fold in cross-validation, and saved the rank of the prediction to disk. Note that such rank was obtained using the corresponding decoding method as in step 2-4 of Sec. \ref{subsubsec:Classification}. They were used in ensemble selection to find the best ensemble. We also trained a model with the same parameter setting on the whole training set, and saved the rank of the prediction of the testing set. Such rank predictions were used for generating the final ensemble submission.
+During parameter searching, we trained a model with each parameter setting on training fold for each run and each fold in cross-validation, and saved the rank of the prediction of the validation fold to disk. Note that such rank was obtained using the corresponding decoding method as in step 2-4 of Sec. \ref{subsubsec:Classification}. They were used in ensemble selection to find the best ensemble. We also trained a model with the same parameter setting on the whole training set, and saved the rank of the prediction of the testing set. Such rank predictions were used for generating the final ensemble submission.
 \begin{table}[t]
 \centering
 \caption{Model Library}
@@ -454,9 +454,9 @@ Package   & \multicolumn{2}{c|}{Model}    & Feature & Weighting\\
   &   &  Softmax & &\\ \cline{3-3}
   &   &  Softkappa & &\\ \cline{3-3}
 \hline
-\multirow{7}*{Sklearn} & \multicolumn{2}{c|}{\texttt{ExtraTreesRegressor}} & Low & Yes\\ \cline{2-5}
+\multirow{7}*{Sklearn} & \multicolumn{2}{c|}{\texttt{GradientBoostingRegressor}} & Low & Yes\\ \cline{2-5}
   & \multicolumn{2}{c|}{\texttt{RandomForestRegressor}}      & Low & Yes\\ \cline{2-5}
-  & \multicolumn{2}{c|}{\texttt{GradientBoostingRegressor}} & Low & Yes\\ \cline{2-5}
+  & \multicolumn{2}{c|}{\texttt{ExtraTreesRegressor}} & Low & Yes\\ \cline{2-5}
   & \multicolumn{2}{c|}{\texttt{SVR}}                            & Low & Yes\\ \cline{2-5}
   & \multicolumn{2}{c|}{\texttt{Ridge}}                & High/Low & Yes\\ \cline{2-5}
   & \multicolumn{2}{c|}{\texttt{Lasso}}                 & High/Low & No\\ \cline{2-5}
@@ -596,9 +596,10 @@ In addition to the above Python modules, we used
 \section{How To Generate the Solution (aka README file)}
 \begin{enumerate}
 \item download data from the competition website and put all the data into folder \texttt{./Data}.
-\item run \texttt{python ./Feat/run\_all.py} to generate feature set.
-\item run \texttt{python ./Model/generate\_best\_single\_model.py} to generate best single model submission.
-\item run \texttt{python ./Model/generate\_model\_library.py} to generate model library.
+\item run \texttt{python ./Feat/run\_all.py} to generate feature set. This will take a few hours.
+\item run \texttt{python ./Model/generate\_best\_single\_model.py} to generate the best single model submission. In my experience, it only takes a few trials to generate model of best performance or similar performance. See the training log in \\ \texttt{./Output/Log/[Pre@solution]\_[Feat@svd100\_and\_bow\_Jun27]\\
+    \_[Model@reg\_xgb\_linear]\_hyperopt.log} for example.
+\item run \texttt{python ./Model/generate\_model\_library.py} to generate model library. This is quite time consuming. \textbf{But you don't have to wait for this script to finish: you can run the next step once you have some models trained.}
 \item run \texttt{python ./Model/generate\_ensemble\_submission.py} to generate submission via ensemble selection.
 \end{enumerate}
 

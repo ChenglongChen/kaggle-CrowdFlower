@@ -3,6 +3,8 @@
 
 1st Place Solution for Search Results Relevance Competition on Kaggle (https://www.kaggle.com/c/crowdflower-search-relevance)
 
+The best single model we have obtained during the competition was an [XGBoost](https://github.com/dmlc/xgboost) model with linear booster of Public LB score **0.69322** and Private LB score **0.70768**. Our final winning submission was a median ensemble of 35 best Public LB submissions. This submission scored **0.70807** on Public LB and **0.72189** on Private LB.
+
 See `./Doc/Kaggle_CrowdFlower_ChenglongChen.pdf` for documentation.
 
 ## Instruction

@@ -3,7 +3,7 @@
 
 Winning Solution for Search Results Relevance Competition on Kaggle (https://www.kaggle.com/c/crowdflower-search-relevance)
 
-See `./Doc/Kaggle_CrowdFlower.pdf` for documentation.
+See `./Doc/Kaggle_CrowdFlower_ChenglongChen.pdf` for documentation.
 
 ## Instruction
 

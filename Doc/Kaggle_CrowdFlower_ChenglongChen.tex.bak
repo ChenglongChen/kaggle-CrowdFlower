@@ -61,6 +61,7 @@ Before generating features, we have found that it's helpful to process the text 
 
 The best single model we have obtained during the competition was an XGBoost model with linear booster of Public LB score \textbf{0.69322} and Private LB score \textbf{0.70768}. Our final winning submission was a median ensemble of 35 best Public LB submissions. This submission scored \textbf{0.70807} on Public LB (my second best Public LB score) and \textbf{0.72189} on Private LB. \footnote{The best Public LB score was \textbf{0.70849} with corresponding Private LB score \textbf{0.72134}. It's a mean version of those 35 LB submissions.}
 
+\begin{comment}
 \begin{figure}[!htb]
 \centering
 \begin{tikzpicture}
@@ -68,6 +69,7 @@ The best single model we have obtained during the competition was an XGBoost mod
 \draw (0,-1.5) -- (0,1.5);
 \end{tikzpicture}
 \end{figure}
+\end{comment}
 
 \section{Preprocessing}
 A few steps were performed to cleaning up the text.
@@ -160,7 +162,7 @@ We also performed stemming before generating features (e.g., counting features a
 \section{Feature Extraction/Selection}
 Before proceeding to describe the features, we first introduce some notations. We use tuple $(q_i, t_i, d_i)$ to denote the $i$-th sample in \texttt{train.csv} or \texttt{test.csv}, where $q_i$ is the \texttt{query}, $t_i$ is the \texttt{product\_title}, and $d_i$ is the \texttt{product\_description}. For \texttt{train.csv}, we further use $r_i$ and $v_i$ to denote \texttt{median\_relevance} and \texttt{relevance\_variance}\footnote{This is actually the standard deviation (std).}, respectively. We use function $\text{ngram}(s, n)$ to extract string/sentence $s$'s $n$-gram (splitted by whitespace), where $n\in\{1,2,3\}$ if not specified. For example
 \[
-\text{ngram}(\text{bridal shower decorations}, 2) = [\text{bridal shower}, \text{shower decorations}]\footnote{Note that this is a list (e.g., \texttt{list} in python), not a set (e.g., \texttt{set} in python).}
+\text{ngram}(\text{bridal shower decorations}, 2) = [\text{bridal shower}, \text{shower decorations}]\footnote{Note that this is a list (e.g., \texttt{list} in Python), not a set (e.g., \texttt{set} in Python).}
 \]
 
 \textbf{All the features are extracted for each run (i.e., repeated time) and fold (used in cross-validation and ensembling), and for the entire training and testing set (used in final model building and generating submission).}
@@ -611,7 +613,7 @@ Some interesting insights we got during the competition:
 \end{itemize}
 
 \section{Simple Features and Methods}
-Without any stacking or ensembling, the best (Public LB) single model we have obtained during the competition was an XGBoost model with linear booster. It is with Public LB score: $0.69322$ and Private LB score: $0.70768$. Apart from the counting features and distance features, it used raw basic TF-IDF and raw cooccurrence TF-IDF.
+Without any stacking or ensembling, the best (Public LB) single model we have obtained during the competition was an XGBoost model with linear booster. It is with Public LB score: \textbf{0.69322} and Private LB score: \textbf{0.70768}. Apart from the counting features and distance features, it used raw basic TF-IDF and raw cooccurrence TF-IDF.
 
 To reproduce the best single model, run\\
 \texttt{> python ./Code/Feat/combine\_feat\_[svd100\_and\_bow\_Jun27].py}\\
@@ -620,7 +622,7 @@ to generate the feature set we used, and\\
 to train the XGBoost model with linear booster. Note that due to randomness in the Hyperopt routine, it won't generate exactly the same score, but a score very similar or even better. Note that, you can also try other linear models, e.g., \texttt{Ridge} in Sklearn.
 
 \section{Acknowledgement}
-We would like to thank the DMLC team for developing the great machine learning package XGBoost, Fran\c{c}ois Chollet for developing package Keras, James Bergstra for developing package Hyperopt.
+We would like to thank the DMLC team for developing the great machine learning package XGBoost, Fran\c{c}ois Chollet for developing package Keras, James Bergstra for developing package Hyperopt. We would also like to thank the Kaggle team and CrowdFlower for organizing this competition.
 
 \bibliographystyle{plain}
 \bibliography{reference}

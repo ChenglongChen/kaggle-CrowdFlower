@@ -1,0 +1,30 @@
+#  To use this example configuration file: 
+#  Set the current directory to rgf_v1/test.      
+#  In the command line, enter: 
+#
+#      perl call_exe.pl ../bin/rgf train_test sample/regress_train_test  
+#
+
+#------------------          Perform 3 runs           --------------------#
+@reg_L2=1,model_fn_prefix=output/regress.lam1.model       # used by 1st run
+@reg_L2=0.1,model_fn_prefix=output/regress.lam0.1.model   # used by 2nd run
+@reg_L2=0.01,model_fn_prefix=output/regress.lam0.01.model # used by 3rd run
+#-------------------------------------------------------------------------#
+
+#---  Other parameters are shared by 3 runs.  
+
+train_x_fn=sample/regress.train.x  # Training data points
+train_y_fn=sample/regress.train.y  # Training targets
+
+test_x_fn=sample/regress.test.x    # Test data points
+test_y_fn=sample/regress.test.y    # Test targets
+
+algorithm=RGF        # RGF with L2 regularization on leaf-only models
+loss=LS              # Square loss
+test_interval=500    # Test (and save) models every time 500 leaves are added.
+max_leaf_forest=5000 # Stop training when #leaf reaches 5000. 
+Verbose              # Display info during training. 
+NormalizeTarget      # 
+
+#train_w_fn=??             # User-specified weights of data points. 
+#model_fn_for_warmstart=?? # Path to the model file to do warm-start with

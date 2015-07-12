@@ -1,0 +1,5 @@
+09/24/2012: Version 1.2 first release. 
+10/15/2012: To remove a compile error with g++ on OS X.  
+06/23/2014: 
+- To remove the restriction on input file sizes; see README.  
+- For synchronizing source files with other software release; see README.  

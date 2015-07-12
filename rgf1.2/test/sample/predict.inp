@@ -1,0 +1,6 @@
+####  sample input to "predict"
+
+#---  apply a model to sample test data and save prediction values
+test_x_fn=sample/test.data.x      # Test data points
+model_fn=output/sample.model-03   # Model 
+prediction_fn=output/sample.pred  # Where to write predictions

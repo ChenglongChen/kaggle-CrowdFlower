@@ -1,0 +1,22 @@
+####  sample input to "train"  ####
+
+train_x_fn=sample/train.data.x  # Training data points
+train_y_fn=sample/train.data.y  # Training targets
+
+#---  Save the models with filenames output/sample.model-01, 
+#---                                 output/sample.model-02,...
+model_fn_prefix=output/sample.model
+
+#---  training parameters.  
+reg_L2=1            # Regularization parameter. 
+algorithm=RGF       # RGF with L2 regularization with leaf-only models
+loss=LS             # Square loss
+test_interval=100   # Save models every time 100 leaves are added.
+max_leaf_forest=500 # Stop training when #leaf reaches 500. 
+Verbose             # Display info during training. 
+
+#---  other parameters (commented out)
+#NormalizeTarget    # Normalize targets so that the average becomes zero. 
+#train_w_fn=??             # User-specified weights of data points. 
+#model_fn_for_warmstart=?? # Path to the model file to do warm-start with
+

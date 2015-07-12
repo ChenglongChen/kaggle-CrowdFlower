@@ -1,4 +1,4 @@
-\begin{thebibliography}{1}
+\begin{thebibliography}{10}
 
 \bibitem{owen}
 \url{http://nycdatascience.com/featured-talk-1-kaggle-data-scientist-owen-zhang/}.
@@ -19,6 +19,12 @@ James Bergstra, R$\acute{\text{e}}$mi Bardenet, Yoshua Bengio, and
 \newblock Algorithms for hyper-parameter optimization.
 \newblock In {\em Advances in Neural Information Processing Systems:
   Proceedings of the 2011 Conference (NIPS '11)}, pages 2546--2554, 2011.
+
+\bibitem{wmd}
+Matt~J. Kusner, Yu~Sun, Nicholas~I. Kolkin, and Kilian~Q. Weinberger.
+\newblock From word embeddings to document distances.
+\newblock In {\em the $32^{\text{nd}}$ International Conference on Machine
+  Learning}, 2015.
 
 \bibitem{ebc}
 Ling Li and Hsuan-Tien Lin.

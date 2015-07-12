@@ -83,7 +83,7 @@ A few steps were performed to cleaning up the text.
 There are some noisy HTML tags in \texttt{product\_description} field, we used the library \texttt{bs4} to clean them up. It didn't bring much gain, but we have kept it anyway.
 
 \subsection{Word Replacement}
-We have created features similar as ``how many words of query are in product title'', so it's important to perform some word replacements, e.g., spelling correction and synonym replacement, to align those words with the same or similar meaning. By exploring the provided data, it seems CrowdFlower has already applied some word replacements in the searching results.
+We have created features similar as ``how many words of query are in product title'', so it's important to perform some word replacements/alignments, e.g., spelling correction and synonym replacement, to align those words with the same or similar meaning. By exploring the provided data, it seems CrowdFlower has already applied some word replacements in the searching results.
 
 \subsubsection{Spelling Correction}
 The misspellings we have identified are listed in Table \ref{tab:spelling_correction}. Note that this is by no means an exhaustive list of all the misspellings in the provided data. It is just the misspellings we have found while exploring the training data during the competition. This also applies to Table \ref{tab:synonym} and Table \ref{tab:Other}.
@@ -341,7 +341,7 @@ The file to generate such features is provided as \textbf{genFeat\_cooccurrence\
 one-hot encoding of the \texttt{query} (generated via \texttt{genFeat\_id\_feat.py})
 
 \subsection{Feature Selection}
-For feature selection, we adopted the idea of ``untuned modeling'' as used in Marios Michailidis and Gert Jacobusse's 2nd place solution \cite{malware_2nd} to Microsoft Malware Classification Challenge. The same model is always used to perform cross validation on a (combined) set of features to test whether it improves the
+For feature selection, we adopted the idea of ``untuned modeling'' as used in Marios Michailidis and Gert Jacobusse's 2nd place solution \cite{malware_2nd} to Microsoft Malware Classification Challenge on Kaggle. The same model is always used to perform cross validation on a (combined) set of features to test whether it improves the
 score compared to earlier feature sets. For features of high dimension (denoted as ``High''), e.g., feature set including raw TF-IDF features, we used XGBoost with linear booster (MSE objective); otherwise, we used \texttt{ExtraTreesRegressor} in Sklearn for features of low dimension (denoted as ``Low'').
 
 Note that with ensemble selection, one can train model library with various feature set and rely on ensemble selection to pick out the best ensemble within the model library. However, feature selection is still helpful. Using the above feature selection method, one can first identified some (possible) well performed feature set, and then trained model library with it. This helps to reduce the computation burden to some extent.
@@ -353,9 +353,7 @@ Early in the competition, we have been using \texttt{StratifiedKFold} on \texttt
 \subsubsection{Following the Same Logic}
 Since this is an NLP related competition, it's common to use TF-IDF features. We have seen a few people fitting a TF-IDF transformer on the stacked training and testing set, and then transforming the training and testing set, respectively. They then use such feature vectors (\textbf{they are fixed}) for cross validation or grid search for the best parameters. They call such method as semi-supervised learning. In our opinion, if one is taking such method, he should refit the transformer using only the whole training set in CV, following the same logic.
 
-On other hand, if one fit the transformer on the training set (for the final model building), then in CV, he should also refit the transformer on the training fold only. This is the method we used. Not only for TF-IDF transformer, but also for other transformations, e.g., normalization and SVD, one should make sure he is following the same logic in both CV and the final model building.
-
-
+On the other hand, if one fit the transformer on the training set (for the final model building), then in CV, he should also refit the transformer on the training fold only. This is the method we used. Not only for TF-IDF transformer, but also for other transformations, e.g., normalization and SVD, one should make sure he is following the same logic in both CV and the final model building.
 
 \begin{table}[t]
 \centering
@@ -420,14 +418,32 @@ This method is implemented within the XGBoost framework using customized objecti
 \end{itemize}
 
 \subsubsection{Softkappa}
-Wse have tried to maximize $\kappa$ directly. To that goal, we re-write it in a soft-version using class probabilities.\footnote{Due to time and space constraints, we are not able to provide the detailed derivation in this version.} The objective is in file \texttt{./Code/Model/utils.py}: \texttt{softkappaObj}. The decoding method is the same as softmax and the performance is similar.
+We have tried to maximize $\kappa$ directly. To that goal, we re-write it in a soft-version using class probabilities. We denote $\hat{h}_{i,n}$ ($n\in{\{1,2,3,4\}}$) to be the predicted probability that the $i$-th sample is of $n$-th class. The corresponding raw score of $\hat{h}_{i,n}$ before softmax is denoted as $\hat{y}_{i,n}$. Thus, we have
+\begin{equation}
+\hat{h}_{i,n}=\frac{\exp(\hat{y}_{i,n})}{\sum_{m}\exp(\hat{y}_{i,m})}
+\end{equation}
+The soft version of $\kappa$, which we will refer to as softkappa is given as
+\begin{equation}
+\tilde{\kappa} = 1 - \frac{o}{e}
+\end{equation}
+where the enumerator is
+\begin{equation}
+o = \sum_{i,n} \frac{(r_i - n)^2}{(N-1)^2}\hat{h}_{i,n}
+\end{equation}
+and the denominator is
+\begin{equation}
+e = \sum_{m,n} \frac{(m - n)^2}{(N-1)^2} \big(\sum_i I\{r_i = n\}\big) \big(\sum_j \hat{h}_{j,m}\big)
+\end{equation}
+In the above equation, $I\{\cdot\}$ is the indicator function: $I\{\cdot\}=1$ if the condition is true, otherwise $I\{\cdot\}=0$.
+
+With these equations, we can derive the gradient and hessian of $\tilde{\kappa}$ with respect to $\hat{y}_{i,n}$, i.e., $\frac{\partial \tilde{\kappa}}{\partial \hat{y}_{i,n}}$ and $\frac{\partial^2 \tilde{\kappa}}{\partial \hat{y}_{i,n}^2}$. The results are coded in the file \texttt{./Code/Model/utils.py}: \texttt{softkappaObj}. The decoding method is the same as softmax and the performance is similar.
 
 \subsection{Sample Weighting}
 We are provided with the variance of the relevance scores given by raters. Such variance can be seem as a measure of the confidence of the ratings, and utilized to weight each sample. We have tried to weight the samples according to their variance, and it gives about 0.003 improvement. We have found the following weighting strategy works well in our models
 \begin{equation}
-w_i = \frac{1}{2}(1 + \frac{\hat{v}_m - \hat{v}_i}{\hat{v}_m})=1-\frac{\hat{v}_i}{2\hat{v}_m}
+w_i = \frac{1}{2}(1 + \frac{\hat{v}_{\max} - \hat{v}_i}{\hat{v}_{\max}})=1-\frac{\hat{v}_i}{2\hat{v}_{\max}}
 \end{equation}
-where $\hat{v}_i = \sqrt{v_i}$ and $\hat{v}_m = \max_{i} \hat{v}_i$.
+where $\hat{v}_i = \sqrt{v_i}$ and $\hat{v}_{\max} = \max_{i} \hat{v}_i$.
 
 Most of our models (see Table \ref{tab:Model_Library}) used weighted data, and a few didn't as to
 \begin{itemize}
@@ -475,7 +491,11 @@ RGF & \multicolumn{2}{c|}{Regression}                              & Low  & No  
 In the original ensemble selection algorithm, the model is added to the ensemble with hard weight 1. However, this is not guaranteed for best performance. We have modified it to allow weight optimized for each model when adding to the ensemble. The weight is optimized with Hyeropt too. This gives better performance than hard weight 1 in our preliminary comparison.
 
 \subsubsection{Randomized Ensemble Selection}
-The final method we used to generate the winning solution is actually without model weight optimization. On the contrary, we replaced weight optimization with \textbf{random weight}. This is inspired by the \texttt{ExtraTreesRegressor} to reduce the model variance (or the risk of overfitting). Figure \ref{fig:CV_Public_Private} shows the CV mean, Public LB, and Private LB scores of our 35 best Public LB submissions generated with this method. As shown, CV score is correlated with the Public LB and Private LB, while it's more correlated with the latter. As time went by, we have trained more and more different models, which turned out to be helpful for ensemble selection in both CV and Private LB (as shown in Figure \ref{fig:CV_Public_Private}). Finally, the winning solution that scored \textbf{0.70807} on Public LB and \textbf{0.72189} on Private LB is just a median ensemble of these 35 best Public LB submissions.
+The final method we used to generate the winning solution is actually without model weight optimization. On the contrary, we replaced weight optimization with \textbf{random weight}. This is inspired by the \texttt{ExtraTreesRegressor} to reduce the model variance (or the risk of overfitting). 
+
+Figure \ref{fig:CV_Public_Private} shows the CV mean, Public LB, and Private LB scores of our 35 best Public LB submissions generated with this method. As shown, CV score is correlated with the Public LB and Private LB, while it's more correlated with the latter. As time went by, we have trained more and more different models, which turned out to be helpful for ensemble selection in both CV and Private LB (as shown in Figure \ref{fig:CV_Public_Private}).
+
+The winning solution that scored \textbf{0.70807} on Public LB and \textbf{0.72189} on Private LB is just a median ensemble of these 35 best Public LB submissions.
 
 \begin{figure}[t]
 \centering
@@ -532,7 +552,7 @@ All the files are in the folder \texttt{./Code/Feat}.
             \item cdf of the \texttt{median\_relevance}
             \item the group info for pairwise ranking in XGBoost
         \end{enumerate}
-\item \textbf{gen\_kfold.py}: This file generates the \texttt{StratifiedKFold} sample indices which will be kept fixed in \textbf{ALL} the following model building parts.
+\item \textbf{gen\_kfold.py}: This file generates the \texttt{StratifiedKFold} sample indices which will be kept fixed in \textbf{ALL} the following feature extraction and model building parts. The sample indices we used during the competition are provided in folder \texttt{./Data}, i.e., \texttt{stratifiedKFold.query.pkl} and \texttt{stratifiedKFold.relevance.pkl}. They are stratified on \texttt{query} and \texttt{median\_relevance}, respectively.
 \item \textbf{genFeat\_id\_feat.py}: This file generates the following features for each run and fold, and for the entire training and testing set.
     \begin{enumerate}
     \item one-hot encoding of query ids (qid)
@@ -603,7 +623,7 @@ In addition to the above Python modules, we used
 \begin{enumerate}
 \item download data from the competition website and put all the data into folder \texttt{./Data}.
 \item run \texttt{python ./Feat/run\_all.py} to generate feature set. This will take a few hours.
-\item run \texttt{python ./Model/generate\_best\_single\_model.py} to generate the best single model submission. In my experience, it only takes a few trials to generate model of best performance or similar performance. See the training log in \\ \texttt{./Output/Log/[Pre@solution]\_[Feat@svd100\_and\_bow\_Jun27]\\
+\item run \texttt{python ./Model/generate\_best\_single\_model.py} to generate the best single model submission. In our experience, it only takes a few trials to generate model of best performance or similar performance. See the training log in \\ \texttt{./Output/Log/[Pre@solution]\_[Feat@svd100\_and\_bow\_Jun27]\\
     \_[Model@reg\_xgb\_linear]\_hyperopt.log} for example.
 \item run \texttt{python ./Model/generate\_model\_library.py} to generate model library. This is quite time consuming. \textbf{But you don't have to wait for this script to finish: you can run the next step once you have some models trained.}
 \item run \texttt{python ./Model/generate\_ensemble\_submission.py} to generate submission via ensemble selection.
@@ -618,6 +638,8 @@ Some interesting insights we got during the competition:
 \item ensemble of a bunch of diverse models helps a lot
 \item Hyperopt is very useful for parameter tuning, and can be used to build model library for ensemble selection
 \end{itemize}
+
+This is a very interesting and educating competition. I have tried and learnt many things. However, there are still many things on my list I would like to explore. Among them, I am very interested in testing out the method presented in \cite{wmd} to this problem. In the paper, the author used Word Mover's Distance (WMD) metric together with \emph{word2vec} embeddings to measure the distance between text documents. This metric is shown to have superior performance than BOW and TF-IDF features.
 
 \section{Simple Features and Methods}
 Without any stacking or ensembling, the best (Public LB) single model we have obtained during the competition was an XGBoost model with linear booster. It is with Public LB score: \textbf{0.69322} and Private LB score: \textbf{0.70768}. Apart from the counting features and distance features, it used raw basic TF-IDF and raw cooccurrence TF-IDF.

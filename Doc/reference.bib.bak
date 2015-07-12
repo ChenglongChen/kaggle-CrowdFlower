@@ -1,22 +1,5 @@
 % Created by Chenglong Chen
-% Date: March 27, 2013
-@book{MatrixCookBook,
-  author        = {Kaare Brandt Petersen and Michael Syskind Pedersen},
-  title         = {The Matrix Cookbook},
-  publisher     = {},
-  month         = {Nov. 15},
-  year          = {2012},
-}
-
-@book{MatrixDiffCalc,
-  author        = {Jan Magnus and Heinz Neudecker},
-  title         = {Matrix Differential Calculus With Applications In Statistics And Econometrics},
-  publisher     = {John Wiley \& Sons},
-  edition       = {Third},
-  month         = {Jan. 16},
-  year          = {2007},
-}
-
+% Date: Jul. 12
 
 @inproceedings{ebc,
     AUTHOR = {Ling Li and Hsuan-Tien Lin},
@@ -71,10 +54,10 @@
 }
 
 
-@book{MatrixCookBook,
-  author        = {Kaare Brandt Petersen and Michael Syskind Pedersen},
-  title         = {The Matrix Cookbook},
+@book{NLTK_Cookbook,
+  author        = {Jacob Perkins},
+  title         = {Python Text Processing with NLTK 2.0 Cookbook},
   publisher     = {},
-  month         = {Nov. 15},
-  year          = {2012},
+  month         = {Nov.},
+  year          = {2010},
 }

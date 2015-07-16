@@ -297,10 +297,10 @@ We first concatenated the TF-IDF vectors of $\{q_i, t_i, d_i\}$ (using common vo
 \item \textbf{Individual SVD}\\
 We fit a SVD transformer for TF-IDF vectors of $\{q_i, t_i, d_i\}$, separately.
 \end{itemize}
-\item \textbf{Cosine Similarity Based on SVD Reduced Features}\\
+\item \textbf{Basic Cosine Similarity Based on SVD Reduced Features}\\
 We computed cosine similarity based on SVD reduced features (using common SVD).
 \item \textbf{Statistical Cosine Similarity Based on SVD Reduced Features}\\
-We computed statistical cosine similarity based on SVD reduced features.
+We computed statistical cosine similarity based on SVD reduced features as in Sec. \ref{subsubsec:Statistical_Distance_Features}.
 \end{itemize}
 \subsubsection{Cooccurrence TF-IDF Features}
 \label{subsubsec:Cooccurrence_TFIDF_Features}
@@ -403,7 +403,35 @@ This also applies to One-Against-All (OAA) classification, e.g., \texttt{Logisti
 \subsubsection{Regression}
 Classification doesn't take into account the weight $w_{i,j}$ in $\kappa$, and the magnitude of the rating. With $w_{i,j}$'s form, it is convincing to apply regression (with mean-squared-error, MSE) to predict the relevance score. In prediction phase, we can convert the raw prediction score to $\{1,2,3,4\}$ following step 2-4 as in Sec. \ref{subsubsec:Classification}.
 
-It turns out that MSE is the best objective among all the alternatives we have tried during the competition. For this reason, we mostly used regression to predict \texttt{median\_relevance}.
+Figure \ref{fig:MSE_decoding} shows some histograms from our reproduced best single model for one run of CV (only one validation fold is used). In specific, we plot histograms of 1) raw prediction, 2) rounding decoding, 3) ceiling decoding, and 4) the above cdf decoding, grouped by the true relevance. It's most obvious that both rounding and ceiling decoding methods have difficulty in predicting relevance 4.
+
+Table \ref{tab:MSE_decoding} shows the kappa scores for each decoding method (using all 3 runs and 3 folds CV). The above cdf decoding method exhibits the best performance among the three methods we considered.
+
+It turns out that MSE (with the above decoding method) is the best objective among all the alternatives we have tried during the competition. For this reason, we mostly used regression to predict \texttt{median\_relevance}.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.9\textwidth]{./compare_MSE_Decoding.pdf}
+\caption{Histograms of raw prediction and predictions using various decoding methods grouped by true relevance.}
+\label{fig:MSE_decoding}
+\end{figure}
+
+\begin{table}[t]
+\centering
+\caption{Performance of various decoding methods for MSE objective.}
+\label{tab:MSE_decoding}
+\begin{tabular}{|c|c|c|}
+\hline
+Method & CV Mean & CV Std \\
+\hline
+Rounding & 0.404277 & 0.005069\\
+\hline
+Ceiling & 0.513138 & 0.006485\\
+\hline
+CDF & \textcolor{red}{0.681876} & 0.005259\\
+\hline
+\end{tabular}
+\end{table}
 
 \subsubsection{Pairwise Ranking}
 We have tried pairwise ranking (LambdaMart) within XGBoost, but didn't obtain acceptable performance (it was worse than softmax).
@@ -491,7 +519,7 @@ RGF & \multicolumn{2}{c|}{Regression}                              & Low  & No  
 In the original ensemble selection algorithm, the model is added to the ensemble with hard weight 1. However, this is not guaranteed for best performance. We have modified it to allow weight optimized for each model when adding to the ensemble. The weight is optimized with Hyeropt too. This gives better performance than hard weight 1 in our preliminary comparison.
 
 \subsubsection{Randomized Ensemble Selection}
-The final method we used to generate the winning solution is actually without model weight optimization. On the contrary, we replaced weight optimization with \textbf{random weight}. This is inspired by the \texttt{ExtraTreesRegressor} to reduce the model variance (or the risk of overfitting). 
+The final method we used to generate the winning solution is actually without model weight optimization. On the contrary, we replaced weight optimization with \textbf{random weight}. This is inspired by the \texttt{ExtraTreesRegressor} to reduce the model variance (or the risk of overfitting).
 
 Figure \ref{fig:CV_Public_Private} shows the CV mean, Public LB, and Private LB scores of our 35 best Public LB submissions generated with this method. As shown, CV score is correlated with the Public LB and Private LB, while it's more correlated with the latter. As time went by, we have trained more and more different models, which turned out to be helpful for ensemble selection in both CV and Private LB (as shown in Figure \ref{fig:CV_Public_Private}).
 

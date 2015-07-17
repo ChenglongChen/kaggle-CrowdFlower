@@ -18,13 +18,13 @@ __description__
 
         2. Intersect Counting Features
 
-            1. Count & Ratio of a’s n-gram in b’s n-gram
+            1. Count & Ratio of a's n-gram in b's n-gram
 
         3. Intersect Position Features
 
-            1. Statistics of Positions of a’s n-gram in b’s n-gram
+            1. Statistics of Positions of a's n-gram in b's n-gram
 
-            2. Statistics of Normalized Positions of a’s n-gram in b’s n-gram
+            2. Statistics of Normalized Positions of a's n-gram in b's n-gram
 
 __author__
 

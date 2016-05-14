@@ -1,0 +1,37 @@
+== 1.40 ==
+* Add: FM-BS (see paper Rendle: "Scaling Factorization Machines to Relational Data", VLDB 2013)
+* Change: default parameter for cache_size of transpose is 200MB
+* Change: binary data can be accessed with windows; added convert and transpose tool
+
+== 1.36 ==
+* Bugfix: remove namespace errors for recent GCC versions 
+* Bugfix: removed problems with binary libfm-files using Visual C++ (reported by Hu Keyun)
+
+== 1.34 ==
+* Support for compiling with Visual C++
+* Change: default parameter for "dim"
+* Change: removed "test(this)" measure from output for MCMC.
+* Add: MCMC reports loglikelihood (base 10; for computing, probabilities are capped to [0.01,0.99])
+* Bugfix: sign of means in MCMC (reported by Kuang Chong)
+
+== 1.32 ==
+* Bugfix: pair-sgd fixed (reported by Tai Yi-Shu)
+* Bugfix: token_reader class does not work properly with some compilers (reported by Bo Yang and Lucas Eustaquio)
+
+== 1.30 ==
+* Add: MCMC inference incl. groups and classification (see papers Freudenthaler et al: "Bayesian Factorization Machines", NIPS-WS 2011; Rendle: "Factorization Machines with libFM", TIST 2012)
+* Improvement: groups for ALS
+* Improvement: classification for "ALS"
+* Improvement: lower memory consumption for ALS and MCMC
+* Add: binary data formats (see tools "transpose" and "convert")
+* Change: SGD does not shuffle the rows in the training data.
+
+== 1.20 ==
+* Add: SGDA learning (see paper Rendle: "Learning Recommender Systems with Adaptive Regularization", WSDM 2012) 
+
+== 1.10 ==
+* Add: ALS optimization for regression FMs (see paper Rendle et al.: "Fast Context-aware Recommendations with Factorization Machines", SIGIR 2011)
+* Add: script to convert files in a triple format (e.g. "userid itemid rating" which is often used in recommender systems) to the libFM format.
+* Improvement: using the method of Leva for generating Gaussian random numbers
+* Bugfix: add typedef for uint
+

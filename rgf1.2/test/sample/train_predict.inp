@@ -1,0 +1,31 @@
+####  sample input to "train_predict"  ####
+
+train_x_fn=sample/train.data.x  # Training data points
+train_y_fn=sample/train.data.y  # Training targets
+
+test_x_fn=sample/test.data.x    # Test data points
+
+#---
+model_fn_prefix=output/m    
+#---  Models are saved with filenames output/m-01, 
+#---                                  output/m-02,...
+#---  Predictions are saved with filenames output/m-01.pred,
+#---                                       output/m-02.pred,...
+#---  Model info such as #leaf are saved with filenames output/m-01.info,
+#---                                                    output/m-02.info,...
+
+SaveLastModelOnly   # Only the last (largest) model will be saved to a file.  
+                    # Comment this out if all the models should be saved.  
+
+#---  training parameters 
+algorithm=RGF       # RGF with L2 regularization on leaf-only models
+reg_L2=1            # Regularization parameter
+loss=LS             # Square loss
+test_interval=100   # Test (and save) models every time 100 leaves are added.
+max_leaf_forest=500 # Stop training when #leaf reaches 500.
+Verbose             # Display info during training. 
+
+#---  other parameters (commented out)
+#NormalizeTarget    # Normalize targets so that the average becomes zero. 
+#train_w_fn=??             # User-specified weights of data points. 
+#model_fn_for_warmstart=?? # Path to the model file to do warm-start with

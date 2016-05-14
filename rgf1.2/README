@@ -1,0 +1,135 @@
+************************************************************************
+                                                                                                  
+                               README                                   
+                                                                    
+                           RGF Version 1.2
+                      Released: September 2012
+                         Modified: June 2014
+                                                                    
+             C++ programs for regularized greedy forest
+                                                                      
+************************************************************************
+
+************************************************************************
+
+0.0 CHANGES (June 2014)
+
+  1. The restriction on the size of training data files has been removed.  
+  
+     Old: Training data files had to be smaller than 2GB.  
+     New: No restriction on the training data file sizes.  
+          (However, the number of lines and the length of each line must 
+           be smaller than 2^31 (2,147,483,648).) 
+
+  2. The solution file for MS Visual C++ 2010 Express has been changed 
+     from 32-bit to 64-bit; also, "__AZ_MSDN__" has been added to 
+     Preprocessor Definitions.  
+  
+  3. Some source code files have been changed for synchronization with 
+     my other software releases.  
+       
+0.1 Acknowledgements
+
+  We thank Dave Slate for suggesting a solution to the issue of file size 
+  restriction above.  
+
+************************************************************************  
+
+Contents:
+---------
+
+1. Introduction
+1.1. System Requirements
+2. Download and Installation
+3. Creating the Executable
+3.1. Windows
+3.2. Unix-like Systems
+3.3. [Optional] Endianness Consideration
+4. Documentation
+5. Contact
+6. Copyright
+7. References
+
+---------------
+1. Introduction
+This software package provides implementation of regularized greedy forest 
+(RGF) described in [1].  
+
+1.1  System Requirement
+Executables are provided only for some versions of Windows (see Section 3 for 
+detail).  If provided executables do not work for your environment, you need 
+to compile C++ code.  
+
+To use the provided tools and to go through the examples in the user guide, 
+Perl is required.  
+
+-----------
+2. Download and Installation
+Download the package and extract the content.  
+
+The top directory of the extracted content is "rgf1.2".  Below all the 
+path expressions are relative to "rgf1.2".  
+
+--------------------------
+3 Creating the Executable 
+
+To go through the examples in the user guide, your executable needs to be 
+at the "bin" directory.  Otherwise, your executable can be anywhere you like.  
+
+-----------
+3.1 Windows
+A 64-bit executable is provided with the filename "rgf.exe.file" at the 
+"bin" directory.  It was tested on Windows 7 with the latest service pack as 
+of 9/17/2012.  You can either rename it to "rgf.exe" and use it, or you can 
+rebuild it by yourself using the provided solution file for MS Visual C++ 
+2010 Express: "proj_vc2010\rgf\rgf.sln".  
+
+---------------------
+3.2 Unix-like Systems
+You need to build your executable from the source code.  A make file 
+"makefile" is provided at the top directory.  It is configured to use 
+"g++" and always compile everything.  You may need to customize "makefile" 
+for your environment.  
+
+To build the executable, change the current directory to the top 
+directory "rgf1.2" and enter in the command line "make".  Check the 
+"bin" directory to make sure that your new executable "rgf" is there.  
+
+----------------------------------------
+3.3  [Optional] Endianness Consideration
+The models obtained by RGF training can be saved to files.  
+The model files are essentially snap shots of memory that include 
+numerical values.  Therefore, the model files are sensitive to 
+"endianness" of the environments.  For this reason, if you wish to 
+share model files among environments of different endianness, you need 
+to follow the instructions below.  Otherwise, you can skip this section.  
+
+To share model files among the environments of different endianness, 
+build your executable for the environment with big-endian with the 
+compile option: 
+
+                           /D_AZ_BIG_ENDIAN_
+
+By doing so, the executable in your big-endian environment swaps the 
+byte order of numerical values before writing and after reading the 
+model files.  
+
+----------------
+4. Documentation
+rgf1.2-guide.pdf "Regularized Greedy Forest Version 1.2: User Guide" is included. 
+
+----------
+5. Contact 
+riejohnson@gmail.com
+
+------------
+6. Copyright
+RGF Version 1.2 is distributed under the GNU public license. Please read 
+the file COPYING.
+
+-------------
+7. References
+
+[1] Rie Johnson and Tong Zhang.  Learning nonlinear functions using 
+    regularized greedy forest.  IEEE Transactions on Pattern Analysis and Machine 
+    Intelligence, 36(5):942-954, May 2014. 

@@ -1,0 +1,49 @@
+\documentclass{article}
+\usepackage[cmex10]{amsmath}
+% for dvipdfm:
+% \def\pgfsysdriver{pgfsys-dvipdfm.def}
+\usepackage{pgfplots}
+\usepackage{subfigure}
+\usepackage{tikz}
+\usetikzlibrary{backgrounds,automata}
+
+\usepgfplotslibrary{external}
+\tikzexternalize[shell escape=-enable-write18]
+\tikzset{external/force remake}
+
+\pgfplotsset{compat=1.3}% <-- moves axis labels near ticklabels (respects tick label widt
+
+
+\begin{document}
+\begin{figure}
+\centering
+\begin{tikzpicture}
+\begin{axis}[
+  xmin=0,
+  xmax=36,
+  %xtick={0,5,...,35},
+  %xticklabel=$\pgfmathprintnumber{\tick}$,
+  xtick=\empty,
+  ylabel=$\kappa$,
+  xlabel=$\longrightarrow \text{Time} \longrightarrow$,
+  grid=major,
+  grid style={dashed},
+  legend columns=3,
+legend style={at={(0.5,1.05)},anchor=south}
+  ]
+\pgfplotstableread{35lb_subs.txt}\loadedtable
+\addplot +[error bars/.cd,
+y dir=both,y explicit,
+error mark=-] table[x index=0,y index=1,y error index=2,header=false] {\loadedtable};
+\addplot +[smooth] table[x index=0,y index=3,header=false] {\loadedtable};
+\addplot +[smooth] table[x index=0,y index=4,header=false] {\loadedtable};
+\legend{%
+CV mean,%
+Public LB,%
+Private LB}
+\end{axis}
+\end{tikzpicture}
+\caption{CV mean, Public LB, and Private LB scores of our 35 best Public LB submissions generating with randomized ensemble selection. One standard deviation of the CV score is plotted via error bar.}
+\label{fig:CV_Public_Private}
+\end{figure}
+\end{document}

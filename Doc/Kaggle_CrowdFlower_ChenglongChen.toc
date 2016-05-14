@@ -1,0 +1,46 @@
+\contentsline {section}{\numberline {1}Summary}{4}{section.1}
+\contentsline {section}{\numberline {2}Preprocessing}{5}{section.2}
+\contentsline {subsection}{\numberline {2.1}Dropping HTML tags}{5}{subsection.2.1}
+\contentsline {subsection}{\numberline {2.2}Word Replacement}{5}{subsection.2.2}
+\contentsline {subsubsection}{\numberline {2.2.1}Spelling Correction}{5}{subsubsection.2.2.1}
+\contentsline {subsubsection}{\numberline {2.2.2}Synonym Replacement}{5}{subsubsection.2.2.2}
+\contentsline {subsubsection}{\numberline {2.2.3}Other Replacements}{5}{subsubsection.2.2.3}
+\contentsline {subsection}{\numberline {2.3}Stemming}{6}{subsection.2.3}
+\contentsline {section}{\numberline {3}Feature Extraction/Selection}{7}{section.3}
+\contentsline {subsection}{\numberline {3.1}Counting Features}{7}{subsection.3.1}
+\contentsline {subsubsection}{\numberline {3.1.1}Basic Counting Features}{7}{subsubsection.3.1.1}
+\contentsline {subsubsection}{\numberline {3.1.2}Intersect Counting Features}{7}{subsubsection.3.1.2}
+\contentsline {subsubsection}{\numberline {3.1.3}Intersect Position Features}{8}{subsubsection.3.1.3}
+\contentsline {subsection}{\numberline {3.2}Distance Features}{8}{subsection.3.2}
+\contentsline {subsubsection}{\numberline {3.2.1}Basic Distance Features}{8}{subsubsection.3.2.1}
+\contentsline {subsubsection}{\numberline {3.2.2}Statistical Distance Features}{8}{subsubsection.3.2.2}
+\contentsline {subsection}{\numberline {3.3}TF-IDF Based Features}{9}{subsection.3.3}
+\contentsline {subsubsection}{\numberline {3.3.1}Basic TF-IDF Features}{9}{subsubsection.3.3.1}
+\contentsline {subsubsection}{\numberline {3.3.2}Cooccurrence TF-IDF Features}{10}{subsubsection.3.3.2}
+\contentsline {subsection}{\numberline {3.4}Other Features}{11}{subsection.3.4}
+\contentsline {subsubsection}{\numberline {3.4.1}Query Id}{11}{subsubsection.3.4.1}
+\contentsline {subsection}{\numberline {3.5}Feature Selection}{11}{subsection.3.5}
+\contentsline {section}{\numberline {4}Modeling Techniques and Training}{11}{section.4}
+\contentsline {subsection}{\numberline {4.1}Cross Validation Methodology}{11}{subsection.4.1}
+\contentsline {subsubsection}{\numberline {4.1.1}The Split}{11}{subsubsection.4.1.1}
+\contentsline {subsubsection}{\numberline {4.1.2}Following the Same Logic}{12}{subsubsection.4.1.2}
+\contentsline {subsection}{\numberline {4.2}Model Objective and Decoding Method}{12}{subsection.4.2}
+\contentsline {subsubsection}{\numberline {4.2.1}Classification}{13}{subsubsection.4.2.1}
+\contentsline {subsubsection}{\numberline {4.2.2}Regression}{13}{subsubsection.4.2.2}
+\contentsline {subsubsection}{\numberline {4.2.3}Pairwise Ranking}{14}{subsubsection.4.2.3}
+\contentsline {subsubsection}{\numberline {4.2.4}Oridinal Regression}{14}{subsubsection.4.2.4}
+\contentsline {subsubsection}{\numberline {4.2.5}Softkappa}{15}{subsubsection.4.2.5}
+\contentsline {subsection}{\numberline {4.3}Sample Weighting}{16}{subsection.4.3}
+\contentsline {subsection}{\numberline {4.4}Ensemble Selection}{16}{subsection.4.4}
+\contentsline {subsubsection}{\numberline {4.4.1}Model Library Building via Guided Parameter Searching}{16}{subsubsection.4.4.1}
+\contentsline {subsubsection}{\numberline {4.4.2}Model Weight Optimization}{16}{subsubsection.4.4.2}
+\contentsline {subsubsection}{\numberline {4.4.3}Randomized Ensemble Selection}{17}{subsubsection.4.4.3}
+\contentsline {section}{\numberline {5}Code Description}{17}{section.5}
+\contentsline {subsection}{\numberline {5.1}Setting}{18}{subsection.5.1}
+\contentsline {subsection}{\numberline {5.2}Feature}{18}{subsection.5.2}
+\contentsline {subsection}{\numberline {5.3}Model}{19}{subsection.5.3}
+\contentsline {section}{\numberline {6}Dependencies}{20}{section.6}
+\contentsline {section}{\numberline {7}How To Generate the Solution (aka README file)}{21}{section.7}
+\contentsline {section}{\numberline {8}Additional Comments and Observations}{21}{section.8}
+\contentsline {section}{\numberline {9}Simple Features and Methods}{21}{section.9}
+\contentsline {section}{\numberline {10}Acknowledgement}{22}{section.10}

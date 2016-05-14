@@ -1,0 +1,63 @@
+% Created by Chenglong Chen
+% Date: Jul. 12
+
+@inproceedings{ebc,
+    AUTHOR = {Ling Li and Hsuan-Tien Lin},
+     title = {Ordinal regression by extended binary classification},
+   booktitle = {Advances in Neural Information Processing Systems: Proceedings of the 2006 Conference (NIPS '06)},
+      YEAR = {2006},
+     PAGES = {865-872},
+}
+
+@article{cocr,
+  author    = {Yu-Xun Ruan and Hsuan-Tien Lin and Ming-Feng Tsai},
+  title     = {Improving ranking performance with cost-sensitive ordinal classification via regression},
+  journal   = {Information Retrieval},
+  volume    = {17},
+  number    = {1},
+  pages     = {1--20},
+  year      = {2014}
+}
+
+@inproceedings{hyperopt,
+    AUTHOR = {James Bergstra and R$\acute{\text{e}}$mi Bardenet and Yoshua Bengio and Bal$\acute{\text{a}}$zs K$\acute{\text{e}}$gl},
+     title = {Algorithms for Hyper-Parameter Optimization},
+   booktitle = {Advances in Neural Information Processing Systems: Proceedings of the 2011 Conference (NIPS '11)},
+    year = {2011},
+    pages = {2546--2554}
+}
+
+@MISC{hyperopt_url,
+ note =	 {\url{http://hyperopt.github.io/hyperopt/}}
+}
+
+@MISC{Otto_1st,
+ note =	 {\url{https://www.kaggle.com/c/otto-group-product-classification-challenge/forums/t/14335/1st-place-winner-solution-gilberto-titericz-stanislav-semenov}}
+}
+
+@MISC{malware_2nd,
+ note =	 {\url{https://www.kaggle.com/c/malware-classification/forums/t/13863/2nd-place-code-and-documentation
+}}
+}
+
+@MISC{owen,
+ note =	 {\url{http://nycdatascience.com/featured-talk-1-kaggle-data-scientist-owen-zhang/}}
+}
+
+
+@article{ensemble_selection,
+  title={Ensemble selection from libraries of models},
+  author={Niculescu-Mizil, Alexandru and Caruana, Rich and Crew, Geoff and Ksikes, Alex},
+  journal={Proceedings of International Conference on Machine Learning},
+  pages={137--144},
+  year={2004}
+}
+
+
+@book{NLTK_Cookbook,
+  author        = {Jacob Perkins},
+  title         = {Python Text Processing with NLTK 2.0 Cookbook},
+  publisher     = {},
+  month         = {Nov.},
+  year          = {2010},
+}

@@ -63,7 +63,7 @@ it is computed using the whole training data.
 
 Figure 2 shows some histograms from my reproduced best single model for one run of CV (only one validation fold is used). In specific, I plot histograms of 1) raw prediction, 2) rounding decoding, 3) ceiling decoding, and 4) the above cdf decoding, grouped by the true relevance. It's most obvious that both rounding and ceiling decoding methods have difficulty in predicting relevance 4.
 
-<img src="compare_MSE_Decoding.jpg" alt="Decoding" align="center"" width="800px"/>
+<img src="compare_MSE_Decoding.jpg" alt="Decoding" align="center" width="800px"/>
 
 *Figure 2. Histograms of raw prediction and predictions using various decoding methods grouped by true relevance. (The code generated this figure is available [here](https://github.com/ChenglongChen/Kaggle_CrowdFlower/blob/master/Fig/compare_MSE_decoding.py).)*
 

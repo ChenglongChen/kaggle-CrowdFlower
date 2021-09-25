@@ -141,6 +141,6 @@ That being said, you should be able to train the best single model (i.e., XGBoos
 
 # Bio
 
-<img src="ChenglongChen_Biography.jpg" alt="Biography" align="left"" width="100px"/>
+<img src="ChenglongChen_Biography.jpg" alt="Biography" align="left" width="100px"/>
 
-**Chenglong Chen** is a recent graduate from Sun Yat-sen University (SYSU), Guangzhou, China, where he received the B.S. degree in Physics in 2010 and recently got the Ph.D. degree in Communication and Information Systems. As a Ph.D. student, his research interests included image processing, multimedia security, pattern recognition, and in particular digital image forensics. He will be starting his job career in Tencent this August, working on advertising.
+**Chenglong Chen** is a recent graduate from Sun Yat-sen University (SYSU), Guangzhou, China, where he received the B.S. degree in Physics in 2010 and recently got the Ph.D. degree in Communication and Information Systems in 2015. As a Ph.D. student, his research interests included image processing, multimedia security, pattern recognition, and in particular digital image forensics ([publication list](https://scholar.google.com/citations?user=RMxLB7QAAAAJ)). He will be starting his job career in Tencent this August 2015, working on advertising.

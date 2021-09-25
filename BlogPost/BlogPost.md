@@ -63,7 +63,7 @@ it is computed using the whole training data.
 
 Figure 2 shows some histograms from my reproduced best single model for one run of CV (only one validation fold is used). In specific, I plot histograms of 1) raw prediction, 2) rounding decoding, 3) ceiling decoding, and 4) the above cdf decoding, grouped by the true relevance. It's most obvious that both rounding and ceiling decoding methods have difficulty in predicting relevance 4.
 
-<img src="compare_MSE_Decoding.jpg" alt="Decoding" align="center"" width="800px"\>
+<img src="compare_MSE_Decoding.jpg" alt="Decoding" align="center" width="800px"/>
 
 *Figure 2. Histograms of raw prediction and predictions using various decoding methods grouped by true relevance. (The code generated this figure is available [here](https://github.com/ChenglongChen/Kaggle_CrowdFlower/blob/master/Fig/compare_MSE_decoding.py).)*
 
@@ -77,9 +77,9 @@ Following are the kappa scores for each decoding method (using all 3 runs and 3 
 
 ## What was your most important insight into the data?
 
-I have found that the most important features for predicting the search results relevance is the *correlation* or *distance* between query and product title/description. In my solution, I have features like interset word counting features, Jaccard coefficients, Dice distance, and cooccurencen word TF-IDF features, etc. Also, it¡¯s important to perform some word replacements/alignments, e.g., spelling correction and synonym replacement, to align those words with the same or similar meaning.
+I have found that the most important features for predicting the search results relevance is the *correlation* or *distance* between query and product title/description. In my solution, I have features like interset word counting features, Jaccard coefficients, Dice distance, and cooccurencen word TF-IDF features, etc. Also, itÂ¡Â¯s important to perform some word replacements/alignments, e.g., spelling correction and synonym replacement, to align those words with the same or similar meaning.
 
-While I didn't have much time exploring word embedding methods, they are very promissing for this problem. During the competition, I have come across a paper entitled "*From word embeddings to document distances*." The authors of this paper used Word Mover¡¯s Distance (WMD) metric together with word2vec embeddings to measure the distance between text documents. This metric is shown to have superior performance than BOW and TF-IDF features.
+While I didn't have much time exploring word embedding methods, they are very promissing for this problem. During the competition, I have come across a paper entitled "*From word embeddings to document distances*." The authors of this paper used Word MoverÂ¡Â¯s Distance (WMD) metric together with word2vec embeddings to measure the distance between text documents. This metric is shown to have superior performance than BOW and TF-IDF features.
 
 
 ## Were you surprised by any of your findings?
@@ -126,7 +126,7 @@ That being said, you should be able to train the best single model (i.e., XGBoos
 
 * Keep your implementation flexible and scaleable. I was lucky to refactor my implementation early on. This allowed me to add new models to the model library very easily.
 
-<img src="35lb_subs-figure0.jpg" alt="35lbSubs" align="center" width="400px"\>
+<img src="35lb_subs-figure0.jpg" alt="35lbSubs" align="center" width="400px"/>
 
 *Figure 3. CV mean, Public LB, and Private LB scores of my 35 best Public LB submissions. One standard deviation of the CV score is plotted via error bar. (The code generated this figure is available [here](https://github.com/ChenglongChen/Kaggle_CrowdFlower/blob/master/Fig/35lb_subs.tex).)*
 
